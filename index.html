@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Paridhi Infotech | Certificate Verification</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --blue:#0b5c73;
+  --dark:#084a5c;
+  --gold:#ffbf00;
+  --light:#eaf5f8;
+  --green:#16a34a;
+}
+
+*{box-sizing:border-box;font-family:Segoe UI,Arial,sans-serif}
+
+body{
+  margin:0;
+  background:#f1f6f9;
+  overflow:hidden;
+}
+
+/* ================= LOADER ================= */
+#loader{
+  position:fixed;
+  inset:0;
+  background:var(--blue);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+
+.spinner{
+  width:60px;height:60px;
+  border:6px solid rgba(255,255,255,.3);
+  border-top:6px solid var(--gold);
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ================= APP ================= */
+#app{display:none;animation:fade .7s ease forwards}
+@keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1}}
+
+/* ================= HEADER ================= */
+header{
+  background:var(--blue);
+  color:#fff;
+  padding:15px;
+}
+
+.header-inner{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+
+/* ===== LOGO PLACEHOLDER (CIRCLE) ===== */
+.logo-circle{
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  background:#fff;
+  border:3px solid var(--gold);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  flex-shrink:0;
+}
+
+.logo-circle img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+header h1{
+  margin:0;
+  color:var(--gold);
+  font-size:clamp(20px,4vw,30px);
+  letter-spacing:2px;
+}
+
+header p{
+  margin:0;
+  font-size:clamp(14px,2.5vw,18px);
+}
+
+/* ================= CARD ================= */
+.container{
+  max-width:1100px;
+  margin:15px auto;
+  background:#fff;
+  border-radius:10px;
+  box-shadow:0 15px 35px rgba(0,0,0,.15);
+  overflow:hidden;
+}
+
+.section{padding:20px}
+
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:15px;
+}
+
+.info p{margin:6px 0;font-size:15px}
+
+/* ================= VERIFIED ================= */
+.verified{
+  color:var(--green);
+  font-weight:700;
+  animation:glow 1.4s infinite;
+}
+@keyframes glow{
+  50%{text-shadow:0 0 12px rgba(22,163,74,.9)}
+}
+
+/* ================= TABLE ================= */
+.table-wrap{overflow-x:auto}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:600px;
+}
+
+th,td{
+  border:1px solid #b6c7ce;
+  padding:10px;
+  text-align:center;
+  font-size:14px;
+}
+
+th{background:var(--dark);color:#fff}
+tbody tr:nth-child(even){background:var(--light)}
+
+/* ================= RESULT ================= */
+.result-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:10px;
+}
+
+.timestamp{
+  margin-top:20px;
+  background:#eafaf1;
+  padding:10px;
+  border-left:4px solid var(--green);
+  font-size:14px;
+}
+
+/* ================= FOOTER ================= */
+footer{
+  background:var(--blue);
+  color:#fff;
+  text-align:center;
+  padding:15px;
+  font-size:13px;
+}
+
+footer a{
+  color:var(--gold);
+  text-decoration:none;
+}
+footer a:hover{text-decoration:underline}
+
+/* ================= PRINT A4 ================= */
+@page{
+  size:A4;
+  margin:12mm;
+}
+
+@media print{
+  body{background:#fff}
+  footer{display:none}
+  #loader{display:none}
+  .container{
+    box-shadow:none;
+    border-radius:0;
+    margin:0;
+  }
+  table{page-break-inside:avoid}
+  *{
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+}
+
+/* MOBILE LOGO SIZE */
+@media(max-width:600px){
+  .logo-circle{
+    width:55px;
+    height:55px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOADER -->
+<div id="loader"><div class="spinner"></div></div>
+
+<div id="app">
+
+<header>
+  <div class="header-inner">
+
+    <!-- LOGO SPACE (EMPTY BY DEFAULT) -->
+    <div class="logo-circle">
+      <!-- LOGO डालना हो तो नीचे img uncomment करें -->
+      <!-- <img src="logo.png" alt="Paridhi Infotech Logo"> -->
+    </div>
+
+    <div>
+      <h1>PARIDHI INFOTECH</h1>
+      <p>Certificate Verification System</p>
+    </div>
+
+  </div>
+</header>
+
+<div class="container">
+
+<div class="section info-grid info">
+  <div>
+    <p><b>Student Name :</b> </p>
+    <p><b>Father Name :</b> </p>
+    <p><b>Course Name :</b> </p>
+  </div>
+  <div>
+    <p><b>Enrollment No :</b> </p>
+    <p><b>Student Roll No :</b> </p>
+    <p><b>Certificate Status :</b> <span class="verified">Verified</span></p>
+  </div>
+</div>
+
+<div class="section table-wrap">
+<table>
+<thead>
+<tr><th>Sr</th><th>Test / Practical</th><th>Speed</th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>1</td>
+		<td>Short Hand (English)</td>
+		<td> wpm</td>
+	</tr>
+
+	<tr>
+		<td>2</td>
+		<td>Short Hand (Hindi)</td>
+		<td> wpm</td>
+	</tr>
+
+	<tr>
+		<td>3</td>
+		<td>Computer Typing English</td>
+		<td> wpm</td>
+	</tr>
+
+	<tr>
+		<td>4</td>
+		<td>Computer Typing Hindi</td>
+		<td> wpm</td>
+	</tr>
+
+</tbody>
+</table>
+</div>
+
+<div class="section result-grid">
+  <p><b>Result :</b> Passed</p>
+  <p><b>Division :</b>    <sup>      </sup> Div</p>
+  <p><b>Date of Issued :</b> </p>
+</div>
+
+<div class="section timestamp" id="timestamp"></div>
+
+</div>
+
+<footer>
+© <span id="year"></span> Paridhi Infotech. All rights reserved.<br>
+Contact :
+<a href="mailto:paridhiinfotech.official@gmail.com
+?subject=Certificate%20Verification%20Query
+&body=Hello%20Paridhi%20Infotech,%0A%0AI%20have%20a%20query%20regarding%20certificate%20verification.%0A%0AThank%20you.">
+paridhiinfotech.official@gmail.com
+</a>
+</footer>
+
+</div>
+
+<script>
+/* LOADER */
+setTimeout(()=>{
+  loader.style.display="none";
+  app.style.display="block";
+  document.body.style.overflow="auto";
+},2000);
+
+/* Dynamic Year */
+year.textContent = new Date().getFullYear();
+
+/* Timestamp */
+function pad(n){return n<10?'0'+n:n}
+const m=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const d=new Date();
+
+timestamp.innerHTML =
+`<b>This Certificate Verification Successful</b><br>
+Dated : ${pad(d.getDate())}/${m[d.getMonth()]}/${d.getFullYear()}
+ ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+</script>
+
+</body>
+</html>
